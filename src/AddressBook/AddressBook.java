@@ -98,6 +98,19 @@ public class AddressBook {
 
         System.out.println();
     }
+    static void deleteContact(String deleteName, ContactsDetails Array[]){
+        boolean flag = false;
+        if(Array[0] == null)
+            System.out.println();
+        else {
+            if (Array[0].firstName.equals(deleteName)){
+                flag = true;
+                Array[0] = null;
+            }
+        }
+        if (flag == false)
+            System.out.println(deleteName + " not found in address book");
+    }
     public static void main(String[]args) {
         ContactsDetails Array[] = new ContactsDetails[1];
         Scanner sc = new Scanner(System.in);
@@ -113,7 +126,7 @@ public class AddressBook {
                     addContact(Array);
                     break;
                 case 2:
-                    System.out.print("Edit  Contact Details:");
+                    System.out.print("Edit person Details:");
                     String name = sc.next();
                     editContact(name,Array);
                     break;
@@ -121,9 +134,16 @@ public class AddressBook {
                     displayContacts(Array);
                     break;
                 case 4:
+                    System.out.print("Delete person Details:");
+                    String deleteName = sc.next();
+                    deleteContact(deleteName, Array);
+                    break;
+                case 5:
                     temp = 0;
                     break;
                 default:
+                    System.out.println("nothing");
+                    break;
             }
         }
             }
