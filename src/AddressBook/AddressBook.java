@@ -2,6 +2,7 @@ package AddressBook;
 import java.util.Scanner;
 
 public class AddressBook {
+    static int index=0;
     static void addContact(ContactsDetails Array[]){
         Scanner sc = new Scanner(System.in);
 
@@ -30,6 +31,11 @@ public class AddressBook {
         String email = sc.next();
 
         Array[0] = new ContactsDetails(fName, lName, address, city, state, zip, phoneNumber, email);
+        while(index >= 0 && index < Array.length) {
+            Array[index] = new ContactsDetails(fName, lName, address, city, state, zip, phoneNumber, email);
+            index++;
+            break;
+        }
     }
     static void editContact(String name, ContactsDetails Array[]) {
         Scanner sc = new Scanner(System.in);
@@ -113,6 +119,7 @@ public class AddressBook {
     }
     public static void main(String[]args) {
         ContactsDetails Array[] = new ContactsDetails[1];
+        ContactsDetails Array1[] = new ContactsDetails[2];
         Scanner sc = new Scanner(System.in);
 
         int temp = 1;
@@ -123,6 +130,12 @@ public class AddressBook {
 
             switch (choice) {
                 case 1:
+                    addContact(Array);
+                    if(index == Array1.length){
+                        System.out.println("full address book you cannot add new contacts");
+                    }else {
+                        addContact(Array);
+                    }
                     addContact(Array);
                     break;
                 case 2:
